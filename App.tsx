@@ -1,11 +1,15 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { StackNavigator } from './src/navigation/StackNavigator';
+import { StatusBar } from 'react-native';
 
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <NavigationContainer>
+      <StatusBar translucent={true} backgroundColor={'transparent'} />
+      <StackNavigator />
+    </NavigationContainer>
   );
 };
 
