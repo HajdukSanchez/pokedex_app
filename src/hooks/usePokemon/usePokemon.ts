@@ -16,10 +16,10 @@ export const usePokemon = () => {
     setIsLoading(true);
     const { data } = await pokemonApi.get<PokemonResponse>(nextPageUrl.current);
     nextPageUrl.current = data.next;
-    mapPokemonList(data.results);
+    _mapPokemonList(data.results);
   };
 
-  const mapPokemonList = (pokemons: PokemonResult[]) => {
+  const _mapPokemonList = (pokemons: PokemonResult[]) => {
     const newPokemons: Pokemon[] = pokemons.map(({ url, name }) => {
       const urlParts = url.split('/');
       const id = parseInt(urlParts[urlParts.length - 2]); // We get the ID of the pokemon
@@ -33,5 +33,6 @@ export const usePokemon = () => {
   return {
     pokemonList,
     isLoading,
+    loadPokemon,
   };
 };

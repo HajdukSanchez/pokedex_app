@@ -9,4 +9,7 @@ export const styles = StyleSheet.create({
     ...globalStyles.title,
     ...globalStyles.margin,
   },
+	list: {
+		justifyContent: 'center'
+	}
 });
