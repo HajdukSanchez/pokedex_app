@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Text, Image } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,7 +8,7 @@ import { usePokemon } from '../../hooks/usePokemon/usePokemon';
 
 const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
-  usePokemon();
+  const { isLoading } = usePokemon();
 
   return (
     <>
