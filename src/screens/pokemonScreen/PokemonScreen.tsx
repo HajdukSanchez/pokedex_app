@@ -44,7 +44,7 @@ const PokemonScreen = ({
           <ActivityIndicator size={30} color={color} />
         </View>
       ) : (
-        <PokemonDetail pokemon={pokemonInformation} />
+        <PokemonDetail pokemon={pokemonInformation} color={color} />
       )}
     </View>
   );

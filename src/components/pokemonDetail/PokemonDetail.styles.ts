@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { globalStyles } from '../../theme/appTheme';
 
 export const styles = StyleSheet.create({
   scroll: {
@@ -15,12 +14,26 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
-  typesContainer: {
-    flexDirection: 'row',
-  },
-  typeText: {
+  sectionText: {
     fontSize: 18,
     color: 'black',
     marginRight: 10,
+  },
+  typesContainer: {
+    flexDirection: 'row',
+  },
+  spriteImage: {
+    width: 100,
+    height: 100,
+  },
+  movesContainer: {
+    flexWrap: 'wrap',
+  },
+  movesText: {
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    marginBottom: 10,
   },
 });
