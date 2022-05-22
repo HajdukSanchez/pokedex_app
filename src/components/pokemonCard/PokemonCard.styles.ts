@@ -7,9 +7,7 @@ export const styles = StyleSheet.create({
     width: 160,
     height: 120,
     padding: 10,
-    backgroundColor: 'red',
     borderRadius: 10,
-    overflow: 'hidden',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -26,6 +24,16 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  cardBackgroundContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    borderBottomLeftRadius: 10,
+    zIndex: -1,
+  },
   cardBackground: {
     position: 'absolute',
     left: -20,
@@ -36,8 +44,8 @@ export const styles = StyleSheet.create({
   },
   cardImage: {
     position: 'absolute',
-    right: -5,
-    bottom: -5,
+    right: -20,
+    bottom: -20,
     width: 120,
     height: 120,
   },
