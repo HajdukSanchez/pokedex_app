@@ -5,6 +5,7 @@ import { useColor } from '../../hooks';
 import { styles } from './PokemonCard.styles';
 import { toCapitalize } from '../../util/utils';
 import { Pokemon } from '../../models/pokemon.model';
+import { useRef } from 'react';
 
 interface PokemonCardProps {
   pokemon: Pokemon;
@@ -12,9 +13,15 @@ interface PokemonCardProps {
 
 const PokemonCard = ({ pokemon: { name, id, image } }: PokemonCardProps) => {
   const { backgroundColor, getColorByImage } = useColor('grey');
+  const isMounted = useRef(true);
 
   useEffect(() => {
+    if (!isMounted.current) return;
     getColorByImage(image);
+
+    return () => {
+      isMounted.current = false;
+    };
   }, [image]);
 
   return (
