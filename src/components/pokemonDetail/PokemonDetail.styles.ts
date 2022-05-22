@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     color: 'black',
     marginRight: 10,
   },
-  typesContainer: {
+  sectionsContainer: {
     flexDirection: 'row',
   },
   spriteImage: {
@@ -33,7 +33,30 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 5,
     marginBottom: 10,
+  },
+  statsContainer: {
+    flexDirection: 'column',
+  },
+  statItem: {
+    flexDirection: 'row',
+    marginBottom: 10,
+  },
+  statText: {
+    width: 150,
+  },
+  statBaseContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+    borderRadius: 10,
+  },
+  statBaseText: {
+    paddingVertical: 2,
+    paddingHorizontal: 10,
+    minWidth: '20%',
+    maxWidth: '100%',
+    fontWeight: 'bold',
+    borderRadius: 10,
   },
 });
