@@ -3,6 +3,9 @@ import { globalStyles } from '../../theme/appTheme';
 
 export const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  backgroundContainer: {
     alignItems: 'center',
     height: 370,
     borderBottomRightRadius: 1000,
@@ -29,5 +32,10 @@ export const styles = StyleSheet.create({
   image: {
     position: 'absolute',
     bottom: -35,
+  },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

@@ -1,18 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { pokemonApi } from '../../api/pokemonApi';
-import { Pokemon, PokemonResponse, PokemonResult } from '../../models/pokemon.model';
+import { Pokemon, PokemonResponse, PokemonResult, PokemonInformation } from '../../models/pokemon.model';
 
-export const usePokemon = () => {
+export const usePokemon = (pokemonId?: number) => {
   const nextPageUrl = useRef('https://pokeapi.co/api/v2/pokemon?limit=40');
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [pokemon, setPokemon] = useState<PokemonInformation>({} as PokemonInformation);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    loadPokemon();
-  }, []);
+    if (pokemonId) getPokemonById(pokemonId);
+  }, [pokemonId]);
 
-  const loadPokemon = async () => {
+  const getPokemonById = async (id: number) => {
+    setIsLoading(true);
+    const { data } = await pokemonApi.get<PokemonInformation>(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    setPokemon(data);
+    setIsLoading(false);
+  };
+
+  const loadPokemons = async () => {
     setIsLoading(true);
     const { data } = await pokemonApi.get<PokemonResponse>(nextPageUrl.current);
     nextPageUrl.current = data.next;
@@ -33,6 +41,8 @@ export const usePokemon = () => {
   return {
     pokemonList,
     isLoading,
-    loadPokemon,
+    pokemon,
+    loadPokemons,
+    getPokemonById,
   };
 };

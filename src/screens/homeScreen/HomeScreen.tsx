@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, Image, FlatList, ActivityIndicator } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,7 +10,11 @@ import { Pokemon } from '../../models/pokemon.model';
 
 const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
-  const { isLoading, pokemonList, loadPokemon } = usePokemon();
+  const { pokemonList, loadPokemons } = usePokemon();
+
+  useEffect(() => {
+    loadPokemons();
+  }, []);
 
   return (
     <>
@@ -22,7 +26,7 @@ const HomeScreen = () => {
         columnWrapperStyle={styles.list}
         keyExtractor={(pokemon: Pokemon) => `${pokemon.id}-${pokemon.name}`}
         renderItem={({ item: pokemon }) => <PokemonCard pokemon={pokemon} />}
-        onEndReached={loadPokemon}
+        onEndReached={loadPokemons}
         onEndReachedThreshold={0.5}
         ListHeaderComponent={<Text style={{ ...styles.text, top: top + 20, marginBottom: top + 40 }}>Pokedex</Text>}
         ListFooterComponent={<ActivityIndicator style={{ height: 100, width: 100 }} />}

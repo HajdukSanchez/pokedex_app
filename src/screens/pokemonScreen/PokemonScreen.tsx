@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, useWindowDimensions } from 'react-native';
+import { View, Text, TouchableOpacity, Image, useWindowDimensions, ActivityIndicator } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -8,6 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styles } from './PokemonScreen.styles';
 import { toCapitalize } from '../../utilities/utils';
 import { RootStackParamList } from '../../routes/routes';
+import { usePokemon } from '../../hooks';
 
 interface PokemonScreenProps extends StackScreenProps<RootStackParamList, 'Pokemon'> {}
 
@@ -17,6 +18,7 @@ const PokemonScreen = ({
   },
   navigation: { navigate },
 }: PokemonScreenProps) => {
+  const { isLoading } = usePokemon(pokemon.id);
   const { top } = useSafeAreaInsets();
   const { width } = useWindowDimensions();
 
@@ -25,8 +27,8 @@ const PokemonScreen = ({
   };
 
   return (
-    <View>
-      <View style={{ ...styles.container, backgroundColor: color }}>
+    <View style={styles.container}>
+      <View style={{ ...styles.backgroundContainer, backgroundColor: color }}>
         <TouchableOpacity activeOpacity={0.8} style={{ ...styles.backButton, top: top + 10 }} onPress={handleBackButton}>
           <Icon name="arrow-back-outline" size={30} color={'white'} />
         </TouchableOpacity>
@@ -35,6 +37,9 @@ const PokemonScreen = ({
         </Text>
         <Image source={require('../../assets/images/pokebola-blanca.png')} style={styles.background} />
         <Image source={{ uri: pokemon.image }} style={{ ...styles.image, width: width * 0.75, height: width * 0.75 }} />
+      </View>
+      <View style={styles.loading}>
+        <ActivityIndicator size={30} color={color} />
       </View>
     </View>
   );
