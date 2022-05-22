@@ -9,3 +9,8 @@ export type RootStackParamList = {
   Home: undefined;
   Pokemon: PokemonScreen;
 };
+
+export type RootTabParamList = {
+  Stack: undefined;
+	Search: undefined;
+};
