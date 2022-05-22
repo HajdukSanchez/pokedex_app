@@ -9,6 +9,7 @@ import { styles } from './PokemonScreen.styles';
 import { toCapitalize } from '../../utilities/utils';
 import { RootStackParamList } from '../../routes/routes';
 import { usePokemon } from '../../hooks';
+import { PokemonDetail } from '../../components';
 
 interface PokemonScreenProps extends StackScreenProps<RootStackParamList, 'Pokemon'> {}
 
@@ -18,7 +19,7 @@ const PokemonScreen = ({
   },
   navigation: { navigate },
 }: PokemonScreenProps) => {
-  const { isLoading } = usePokemon(pokemon.id);
+  const { isLoading, pokemonInformation } = usePokemon(pokemon.id);
   const { top } = useSafeAreaInsets();
   const { width } = useWindowDimensions();
 
@@ -38,9 +39,13 @@ const PokemonScreen = ({
         <Image source={require('../../assets/images/pokebola-blanca.png')} style={styles.background} />
         <Image source={{ uri: pokemon.image }} style={{ ...styles.image, width: width * 0.75, height: width * 0.75 }} />
       </View>
-      <View style={styles.loading}>
-        <ActivityIndicator size={30} color={color} />
-      </View>
+      {isLoading ? (
+        <View style={styles.loading}>
+          <ActivityIndicator size={30} color={color} />
+        </View>
+      ) : (
+        <PokemonDetail pokemon={pokemonInformation} />
+      )}
     </View>
   );
 };

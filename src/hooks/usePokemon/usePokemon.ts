@@ -6,7 +6,7 @@ import { Pokemon, PokemonResponse, PokemonResult, PokemonInformation } from '../
 export const usePokemon = (pokemonId?: number) => {
   const nextPageUrl = useRef('https://pokeapi.co/api/v2/pokemon?limit=40');
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
-  const [pokemon, setPokemon] = useState<PokemonInformation>({} as PokemonInformation);
+  const [pokemonInformation, setPokemonInformation] = useState<PokemonInformation>({} as PokemonInformation);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const usePokemon = (pokemonId?: number) => {
   const getPokemonById = async (id: number) => {
     setIsLoading(true);
     const { data } = await pokemonApi.get<PokemonInformation>(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    setPokemon(data);
+    setPokemonInformation(data);
     setIsLoading(false);
   };
 
@@ -41,7 +41,7 @@ export const usePokemon = (pokemonId?: number) => {
   return {
     pokemonList,
     isLoading,
-    pokemon,
+    pokemonInformation,
     loadPokemons,
     getPokemonById,
   };
