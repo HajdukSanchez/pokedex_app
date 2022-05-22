@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { globalStyles } from '../../theme/appTheme';
 
 export const styles = StyleSheet.create({
   card: {
@@ -18,10 +19,10 @@ export const styles = StyleSheet.create({
     elevation: 6,
   },
   cardTtext: {
+    ...globalStyles.text,
     top: 10,
     left: 10,
     color: 'white',
-    fontSize: 20,
     fontWeight: 'bold',
   },
   cardBackgroundContainer: {

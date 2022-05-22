@@ -1,15 +1,16 @@
 import React from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
-import { HomeScreen } from '../screens';
-import { ScreenNames } from '../routes/routes';
+import { HomeScreen, PokemonScreen } from '../screens';
+import { RootStackParamList } from '../routes/routes';
 
-const { Navigator, Screen } = createStackNavigator();
+const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
 
 const StackNavigator = () => {
   return (
-    <Navigator screenOptions={_screenOptions}>
-      <Screen name={ScreenNames.Home} component={HomeScreen} />
+    <Navigator screenOptions={_screenOptions} initialRouteName={'Home'}>
+      <Screen name={'Home'} component={HomeScreen} />
+      <Screen name={'Pokemon'} component={PokemonScreen} />
     </Navigator>
   );
 };
