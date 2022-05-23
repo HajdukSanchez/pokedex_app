@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { styles } from './SearchScreen.styles';
-import { usePokemonSearch } from '../../hooks/usePokemonSearch/usePokemonSearch';
+import { usePokemonSearch } from '../../hooks';
 import { Loading, PokemonList, PokemonListHeader, SearchInput } from '../../components';
 
 const SearchScreen = () => {
