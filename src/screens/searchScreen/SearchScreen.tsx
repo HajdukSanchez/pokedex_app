@@ -1,10 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { styles } from './SearchScreen.styles';
+import { SearchInput } from '../../components';
 
 const SearchScreen = () => {
+  const { top } = useSafeAreaInsets();
+
   return (
-    <View>
-      <Text>SearchScreen</Text>
+    <View style={{ ...styles.container, marginTop: top + 20 }}>
+      <SearchInput />
     </View>
   );
 };
