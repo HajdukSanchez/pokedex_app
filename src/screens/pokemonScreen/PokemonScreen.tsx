@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, useWindowDimensions, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, Image, useWindowDimensions } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StackScreenProps } from '@react-navigation/stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { usePokemon } from '../../hooks';
 import { styles } from './PokemonScreen.styles';
 import { toCapitalize } from '../../utilities/utils';
 import { RootStackParamList } from '../../routes/routes';
-import { usePokemon } from '../../hooks';
-import { PokemonDetail } from '../../components';
+import { Loading, PokemonDetail } from '../../components';
 
 interface PokemonScreenProps extends StackScreenProps<RootStackParamList, 'Pokemon'> {}
 
@@ -39,13 +39,7 @@ const PokemonScreen = ({
         <Image source={require('../../assets/images/pokebola-blanca.png')} style={styles.background} />
         <Image source={{ uri: pokemon.image }} style={{ ...styles.image, width: width * 0.75, height: width * 0.75 }} />
       </View>
-      {isLoading ? (
-        <View style={styles.loading}>
-          <ActivityIndicator size={30} color={color} />
-        </View>
-      ) : (
-        <PokemonDetail pokemon={pokemonInformation} color={color} />
-      )}
+      {isLoading ? <Loading color={color} /> : <PokemonDetail pokemon={pokemonInformation} color={color} />}
     </View>
   );
 };

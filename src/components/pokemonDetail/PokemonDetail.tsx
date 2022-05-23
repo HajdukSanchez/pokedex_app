@@ -113,7 +113,7 @@ const _MovesSection = ({ moves, color }: MovesSectionProps) => {
 
 const _StatsSection = ({ stats, color }: StatsSectionProps) => {
   return (
-    <View style={styles.sectionContainer}>
+    <View style={{ ...styles.sectionContainer, marginBottom: 80 }}>
       <Text style={styles.sectionTitle}>Stats</Text>
       <View style={styles.statsContainer}>
         {stats.map(({ stat, base_stat }, index) => (

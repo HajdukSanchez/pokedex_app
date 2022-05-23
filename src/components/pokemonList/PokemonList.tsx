@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
-import { FlatList, ActivityIndicator, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
+import { Loading } from '../loading/Loading';
 import { styles } from './PokemonList.styles';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonCard } from '../pokemonCard/PokemonCard';
@@ -24,16 +25,8 @@ const PokemonList = ({ data, showHeader, headerComponent, onReachEnd }: PokemonL
       onEndReached={onReachEnd}
       onEndReachedThreshold={0.5}
       ListHeaderComponent={showHeader && headerComponent ? headerComponent : <View></View>}
-      ListFooterComponent={<_FooterComponent />}
+      ListFooterComponent={<Loading />}
     />
-  );
-};
-
-const _FooterComponent = () => {
-  return (
-    <View style={styles.loadingContainer}>
-      <ActivityIndicator style={styles.loading} />
-    </View>
   );
 };
 

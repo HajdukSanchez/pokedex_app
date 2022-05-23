@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     height: 370,
     borderBottomRightRadius: 1000,
     borderBottomLeftRadius: 1000,
-		zIndex: 10000,
+    zIndex: 10000,
   },
   backButton: {
     position: 'absolute',
@@ -33,10 +33,5 @@ export const styles = StyleSheet.create({
   image: {
     position: 'absolute',
     bottom: -35,
-  },
-  loading: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });

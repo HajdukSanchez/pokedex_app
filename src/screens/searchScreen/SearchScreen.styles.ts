@@ -5,9 +5,14 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  loading: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  search: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    zIndex: 10000,
+  },
+  listTitle: {
+    marginTop: 120,
+    marginBottom: 20,
   },
 });

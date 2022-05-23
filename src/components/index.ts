@@ -1,3 +1,4 @@
+export { Loading } from './loading/Loading';
 export { PokemonCard } from './pokemonCard/PokemonCard';
 export { SearchInput } from './searchInput/SearchInput';
 export { PokemonList } from './pokemonList/PokemonList';
