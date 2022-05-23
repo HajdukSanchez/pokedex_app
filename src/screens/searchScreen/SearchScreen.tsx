@@ -5,8 +5,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { styles } from './SearchScreen.styles';
 import { usePokemonSearch } from '../../hooks';
-import { Loading, PokemonList, PokemonListHeader, SearchInput } from '../../components';
 import { Pokemon } from '../../models/pokemon.model';
+import { Loading, PokemonList, PokemonListHeader, SearchInput } from '../../components';
 
 const SearchScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -15,10 +15,12 @@ const SearchScreen = () => {
   const [filterPokemon, setFilterPokemon] = useState<Pokemon[]>([]);
 
   useEffect(() => {
-    if (searchText.length > 1) {
+    if (searchText.length === 0) return setFilterPokemon([]);
+    if (isNaN(parseInt(searchText))) {
       setFilterPokemon(pokemonList.filter((pokemon: Pokemon) => pokemon.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())));
-    } else if (searchText.length === 0) {
-      setFilterPokemon([]);
+    } else {
+      const pokemonById: Pokemon | undefined = pokemonList.find((pokemon: Pokemon) => pokemon.id === parseInt(searchText))!;
+      setFilterPokemon(pokemonById ? [pokemonById] : []);
     }
   }, [searchText]);
 
