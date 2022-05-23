@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { globalStyles } from '../../theme/appTheme';
 
 export const styles = StyleSheet.create({
   container: {
@@ -14,5 +13,16 @@ export const styles = StyleSheet.create({
   listTitle: {
     marginTop: 120,
     marginBottom: 20,
+  },
+  imageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    position: 'absolute',
+    width: 350,
+    height: 350,
+    opacity: 0.3,
   },
 });

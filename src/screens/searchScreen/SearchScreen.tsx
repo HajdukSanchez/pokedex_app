@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -29,12 +29,18 @@ const SearchScreen = () => {
   ) : (
     <View style={{ ...styles.container }}>
       <SearchInput style={{ ...styles.search, top: top + 20 }} onDebounce={setSearchText} debounceTime={300} />
-      <PokemonList
-        data={filterPokemon}
-        showHeader
-        showLoading={false}
-        headerComponent={<PokemonListHeader title={searchText} style={styles.listTitle} />}
-      />
+      {filterPokemon.length > 0 ? (
+        <PokemonList
+          data={filterPokemon}
+          showHeader
+          showLoading={false}
+          headerComponent={<PokemonListHeader title={searchText} style={styles.listTitle} />}
+        />
+      ) : (
+        <View style={styles.imageContainer}>
+          <Image source={require('../../assets/images/pokebola.png')} style={styles.image} />
+        </View>
+      )}
     </View>
   );
 };

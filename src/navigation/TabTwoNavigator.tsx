@@ -1,15 +1,15 @@
 import React from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
-import { HomeScreen, PokemonScreen } from '../screens';
 import { RootStackParamList } from '../routes/routes';
+import { PokemonScreen, SearchScreen } from '../screens';
 
 const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
 
-const StackNavigator = () => {
+const TabTwoNavigator = () => {
   return (
-    <Navigator screenOptions={_screenOptions} initialRouteName={'Home'}>
-      <Screen name={'Home'} component={HomeScreen} />
+    <Navigator screenOptions={_screenOptions} initialRouteName={'Search'}>
+      <Screen name={'Search'} component={SearchScreen} />
       <Screen name={'Pokemon'} component={PokemonScreen} />
     </Navigator>
   );
@@ -19,4 +19,4 @@ const _screenOptions: StackNavigationOptions = {
   headerShown: false,
 };
 
-export { StackNavigator };
+export { TabTwoNavigator };

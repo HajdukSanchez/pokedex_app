@@ -7,10 +7,11 @@ interface PokemonScreen {
 
 export type RootStackParamList = {
   Home: undefined;
+  Search: undefined;
   Pokemon: PokemonScreen;
 };
 
 export type RootTabParamList = {
-  Stack: undefined;
-	Search: undefined;
+  TabOne: undefined;
+	TabTwo: undefined;
 };

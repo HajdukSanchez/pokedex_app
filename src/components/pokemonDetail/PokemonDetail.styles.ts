@@ -40,7 +40,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   statItem: {
-    flexDirection: 'row',
+		flexDirection: 'row',
+		alignItems: 'center',
     marginBottom: 10,
   },
   statText: {
@@ -54,7 +55,8 @@ export const styles = StyleSheet.create({
   statBaseText: {
     paddingVertical: 2,
     paddingHorizontal: 10,
-    minWidth: '20%',
+		textAlignVertical: 'center',
+    minWidth: '30%',
     maxWidth: '100%',
     fontWeight: 'bold',
     borderRadius: 10,
