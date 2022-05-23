@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, TextInput, StyleProp, ViewStyle } from 'react-native';
+import { View, TextInput, StyleProp, ViewStyle, Keyboard } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useDebounce } from '../../hooks';
@@ -7,15 +7,22 @@ import { useDebounce } from '../../hooks';
 import { styles } from './SearchInput.styles';
 
 interface SearchInputProps {
+  onDebounce: (value: string) => void;
+  debounceTime?: number;
   style?: StyleProp<ViewStyle>;
 }
 
-const SearchInput = ({ style }: SearchInputProps) => {
+const SearchInput = ({ style, debounceTime = 500, onDebounce }: SearchInputProps) => {
   const [text, setText] = useState<string>('');
-  const { debounceValue } = useDebounce(text, 500);
+  const { debounceValue } = useDebounce(text, debounceTime);
+
+  const handleClear = () => {
+    setText('');
+    Keyboard.dismiss();
+  };
 
   useEffect(() => {
-    console.log('debounceValue', debounceValue); // After 500ms we can get the debounced value
+    onDebounce(debounceValue);
   }, [debounceValue]);
 
   return (
@@ -30,7 +37,11 @@ const SearchInput = ({ style }: SearchInputProps) => {
           value={text}
           onChangeText={setText}
         />
-        <Icon name="search-outline" color={'grey'} size={30} />
+        {text.length > 0 ? (
+          <Icon.Button name="close-outline" color={'grey'} size={30} onPress={handleClear} style={styles.closeIcon} />
+        ) : (
+          <Icon name="search-outline" color={'grey'} size={30} />
+        )}
       </View>
     </View>
   );

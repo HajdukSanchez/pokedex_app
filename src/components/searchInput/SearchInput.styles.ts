@@ -27,4 +27,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: 'black',
   },
+  closeIcon: {
+    backgroundColor: '#F3F1F3',
+  },
 });

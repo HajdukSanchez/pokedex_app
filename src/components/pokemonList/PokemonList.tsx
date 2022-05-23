@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 
 import { Loading } from '../loading/Loading';
 import { styles } from './PokemonList.styles';
@@ -9,11 +9,12 @@ import { PokemonCard } from '../pokemonCard/PokemonCard';
 interface PokemonListProps {
   data: Pokemon[];
   showHeader?: boolean;
+  showLoading?: boolean;
   headerComponent?: ReactElement;
   onReachEnd?: () => void;
 }
 
-const PokemonList = ({ data, showHeader, headerComponent, onReachEnd }: PokemonListProps) => {
+const PokemonList = ({ data, showHeader, headerComponent, showLoading, onReachEnd }: PokemonListProps) => {
   return (
     <FlatList
       data={data}
@@ -24,8 +25,8 @@ const PokemonList = ({ data, showHeader, headerComponent, onReachEnd }: PokemonL
       renderItem={({ item: pokemon }) => <PokemonCard pokemon={pokemon} />}
       onEndReached={onReachEnd}
       onEndReachedThreshold={0.5}
-      ListHeaderComponent={showHeader && headerComponent ? headerComponent : <View></View>}
-      ListFooterComponent={<Loading />}
+      ListHeaderComponent={showHeader && headerComponent ? headerComponent : null}
+      ListFooterComponent={showLoading ? <Loading /> : null}
     />
   );
 };
